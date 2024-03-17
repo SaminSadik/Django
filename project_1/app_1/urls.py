@@ -5,5 +5,4 @@ from . import views # for using functions from app views.py
 
 urlpatterns = [
     path('', views.home), # accessible from projectURL/appName/
-    path('about/', views.about), # accessible from projectURL/appName/about/
 ]
