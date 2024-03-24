@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>page</title>
+</head>
+
+<body>
+
+    <!--! Template Language -->
+    <p>Name: <b>{{Name}}</b></p>
+    <!-- variables from backend must be within double curly braces -->
+    <p>Age: <b>{{Age}}</b></p>
+
+    <!-- if-elif-else conditional ladder like python: -->
+    {% if Age >= 20 %} <!-- must be inside %% in {} -->
+    <p>You are old enough</p>
+    {% elif Age > 9 and Age <= 19 %}
+    <!-- variable or value inside conditional don't need double curly braces -->
+    <p>You are almost old enough</p>
+    {% else %} <p>You are not old enough</p>
+    {% endif %} <!-- must have, to indicate the end of condition -->
+
+    <!-- For Loop -->
+    {% for i in Dict %}
+    <p>{{i.id}}: {{i.Title}}</p>
+    {% endfor %} <!-- must have, to indicate the end of loop -->
+
+    <!--! Template Filtering -->
+    <!-- join: -->
+    <p>{{Dict | join:" ; "}}</p> <!-- must be exact format, even spaces -->
+    
+    <!-- date & time: -->
+    <p>
+        {{Datetime | date:"D d M Y"}}, 
+        {{Datetime | time:"h:i A"}}
+    </p>
+    
+    <!-- default: -->
+    <p>
+        {{"String" | default:"Blah Blah"}}
+        <!-- default value will display if initial string is empty -->
+        {{"" | default:"Was Empty"}}
+    </p> 
+
+    <!-- add: -->
+    <p>
+        {{3 | add:"2"}}
+        <!-- initial value & adding value must be of same type -->
+        {{"is" | add:" added "}}
+    </p> 
+
+    <!-- cut: -->
+    <p>
+        {{"Ddjango" | cut:"d"}}
+        <!-- all occurances will be cut, but case matters -->
+        {{"C U T" | cut:" "}}
+    </p>
+
+    <!-- upper & lower: -->
+    <p>
+        {{"THIS WAS UPPERCASE" | lower}} & 
+        {{"this was lowercase" | upper}}
+    </p>
+    <!-- capfirst & title: -->
+    <p>
+        {{"only FIRST letter capitalized" | capfirst}} &
+        {{"all words start with capital letter" | title}}
+    </p>
+
+    <!-- timesince -->
+    <p>
+        {{Birthday | timesince}} <!-- shows how long ago the date was -->
+        ({{Birthday | timesince:Datetime}}) <!-- show time since another date -->
+    </p>
+
+    <!-- length: -->
+    <p>
+        Length of " " is {{" " | length}}, 
+        Length of "" is {{"" | length}} 
+    </p>
+
+    <!-- truncatechars & truncatewords: -->
+    <p>
+        {{"This line is ok" | truncatechars:15}}, 
+        <!-- cut all chars exceeding given char count & replace with just ... -->
+        {{"This line is too long" | truncatechars:20}}
+    </p>
+    <p>
+        {{"Just enough words" | truncatewords:3}}
+        ({{"Just enough words" | wordcount}}). <!-- number of words -->
+        <!-- cut all words exceeding given word count -->
+        {{"Or is it too many words?" | truncatewords:5}}
+    </p>
+
+</body>
+</html>
