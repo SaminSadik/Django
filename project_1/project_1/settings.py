@@ -118,6 +118,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#! For Loading static files as www.../static/filename.ext
+STATICFILES_DIRS = [
+    BASE_DIR /'static',
+] #! only needed for project static files, not for app static files
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
