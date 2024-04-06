@@ -9,4 +9,5 @@ urlpatterns = [
     path('stic/', views.static), # for static pages
     path('utag/', views.utag, name='utag'), # name is used to access from html file
     path('utag/page/<int:id>/', views.urltag, name='urltag'), #must have .../page/anyINT/ to access
+    path('inherited/', views.inherited)
 ]

@@ -1,0 +1,9 @@
+{% extends '../base.html' %} <!-- must be at the beginning -->
+
+{% block title %} InheritedPage {% endblock %}
+<!-- anything inside the blocks in base html will be replaced -->
+
+{% block content %}
+{{block.super}} <!-- adds content from base html block as well -->
+<h2>Inherited Page</h2>
+{% endblock %}

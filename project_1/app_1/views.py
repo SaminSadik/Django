@@ -49,3 +49,6 @@ def urltag(request, id):
 def utag(request):
     return render(request, "app_1/URLtag.html", {'input' : request.GET})
     # passed anything GOT after .../utag/? as url input
+
+def inherited(request):
+    return render(request, "app_1/inherit/inherited.html")

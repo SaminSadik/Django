@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        {% block title %}
+        The
+        {% endblock title %}
+    </title>
+</head>
+
+<!-- only the code inside blocks can be overriden in inherited templates -->
+<!-- all the other code will be inherited without change -->
+
+<body>
+
+    {% block content %} <!-- blocks can't have duplicate names -->
+    <h1>This is The </h1>
+    {% endblock %} <!-- mentioning block name after enblock is optional -->
+
+</body>
+</html>
