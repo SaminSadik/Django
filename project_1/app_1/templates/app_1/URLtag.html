@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>URL tagging</title>
+</head>
+
+<body>
+
+    <h1>
+        <a href="{% url 'utag' %}">There</a>
+        <!-- must have the same 'name' in urls path -->
+    </h1>
+    <h1>
+        <a href="{% url 'urltag' id=99 %}">Here</a>
+    </h1>
+
+    <!-- try with .../urltag/page/<id>/ -->
+        <!-- e.g. <id> can be 99 -->
+    <p>{{id}}</p>
+
+    <!-- try with .../utag/<input> -->
+        <!-- e.g. <input> can be ?page=2&name=SanId=3/ -->
+            <!-- starting with ? is must here, as well as & as separator, and last / won't be ignored by <input> -->
+    <p>{{input.name}}  {{input}}</p> <!-- get specific part with dot or the whole <input> as QueryDict -->
+
+</body>
+</html>

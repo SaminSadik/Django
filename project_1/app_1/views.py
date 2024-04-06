@@ -41,3 +41,11 @@ def static(request):
     ] # from: https://jsonplaceholder.typicode.com/posts
 
     return render(request, "app_1/static.html", {'data' : data})
+
+def urltag(request, id):
+    return render(request, "app_1/URLtag.html", {'id' : id})
+    # passed the id recieved from urls to html page
+
+def utag(request):
+    return render(request, "app_1/URLtag.html", {'input' : request.GET})
+    # passed anything GOT after .../utag/? as url input
