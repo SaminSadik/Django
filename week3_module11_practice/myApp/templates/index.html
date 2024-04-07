@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Meals {% endblock %}
+
+{% block content %}
+<div class="container p-5">
+    <div class="row justify-content-evenly g-5 m-5">
+        {% for item in meals %}
+        <div class="card col-lg-3 col-md-4 p-0" style="width: 20rem;">
+            <img class="card-img-top" src="{{item.strMealThumb}}">
+            <div class="card-body">
+                <h5 class="card-title">{{item.strMeal}}</h5>
+                <p class="card-text">Delicious meal with rich flavour that cannot be forgotten. Made with ...</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
