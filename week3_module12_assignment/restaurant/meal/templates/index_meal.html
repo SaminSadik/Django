@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block meal-active %} active {% endblock %}
+
+{%block content%}
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <h1 class="my-5">Available Meal Categories</h1>
+    <div class="container row align-items-center justify-content-around mt-3">
+        {% for meal in meals %}
+        <div class="card col-6 border-0" style="height: 30rem; width: 25rem;">
+            <img src="{{meal.strCategoryThumb}}" class="card-img-top" alt="meal">
+            <div class="card-body">
+                <h5 class="card-title fw-bold fs-3">{{meal.strCategory}}</h5>
+                <h5 class="card-title fw-bold fs-5">Category ID: {{meal.idCategory}}</h5>
+                <p class="card-text lead">{{meal.strCategoryDescription | truncatewords:10 }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static '/CSS/style_about.css' %}">
+{% endblock %}
+
+{% block about-active %} active {% endblock %}
+
+{% block content %}
+<section class="bg-secondary-subtle">
+        <img src="{% static '/img/serving.png' %}" class="pic">
+        <div class="TextBox">
+            <h2>Our Story</h2>
+            <p class="lead">Food Hero is a fine dining experience established in 2002. It was the sole goal of our founder, great Chef Jahangir, to treat people with the most extraordinarily delicious taste of some of the most ordinary meals. Since the beginning of our journey, we have been preparing dealicious and healthy meals from freshly sourced ingredients to make tastebuds addicted.</p>
+        </div>
+</section>
+
+<section class="bg-dark-subtle">
+        <div class="TextBox">
+            <h2>Our Culinary Heroes</h2>
+            <p class="lead">Our talented culinary team comprises of passionate individuals who bring diverse expertise and creativity to the kitchen. With a shared commitment to excellence, our chefs blend traditional techniques with innovative flair to craft dishes that  deliver exceptional dining experiences, ensuring every plate reflects our dedication to culinary excellence.</p>
+        </div>
+        <img src="{% static '/img/cooking.jpg' %}" class="pic">
+</section>
+{% endblock %}

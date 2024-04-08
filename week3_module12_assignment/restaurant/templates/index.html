@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+{% endblock %}
+
+{% block home-active %} active {% endblock %}
+
+{% block content %}
+<section class="container mt-5 pt-5"> 
+    <div class="text-center mt-5 pt-5 mt-lg-0 pt-lg-0">
+        <h1 class="hero-heading">Delicious <span class="text-primary">Meals</span></h1>
+        <h1 class="hero-heading">At a <span class="text-danger">Low</span> Cost</h1>
+        <p class="hero-text mt-3">Food made with love and fresh ingredients right from our farms</p>
+        <p class="hero-text mb-4">Discover the taste of deliciousness prepared by our culinary heros</p>
+        <a href="{% url 'meals'%}"><button class="btn btn-danger fs-3">Order Now</button></a>
+    </div>
+</section>
+<footer class="fixed-bottom">
+    <img src="{% static 'img/food_footer.png' %}" class="img-fluid" width="100%">
+</footer>
+{% endblock %}

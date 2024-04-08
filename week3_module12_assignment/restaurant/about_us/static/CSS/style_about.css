@@ -1,0 +1,28 @@
+section
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.TextBox
+{
+    width: 45vw;
+    margin-block: 3vw;
+    padding-inline: 8vw;
+    text-align: justify;
+}
+.pic {width: 45vw;}
+
+@media (max-width: 992px)
+{
+    section {display: block;}
+    .pic {width: 100vw;}
+    .TextBox
+    {
+        width: 85vw;
+        margin-top: 10vw;
+        margin-bottom: 15vw;
+        margin-left: 5vw;
+    }
+}

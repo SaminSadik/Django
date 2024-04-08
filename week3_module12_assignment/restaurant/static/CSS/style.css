@@ -1,0 +1,16 @@
+section, footer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-heading
+{
+    font-size: 4.4rem;
+}
+
+.hero-text
+{
+    font-size: 1rem;
+}
