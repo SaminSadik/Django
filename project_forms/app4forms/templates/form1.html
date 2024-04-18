@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <form method="get"> <!-- inputs(with name) will display with url after submitting -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="name">
+        </div>
+        <div class="mb-4"> <!-- won't show inputs in url without name -->
+            <label for="pass" class="form-label">Password</label>
+            <input type="password" class="form-control" id="pass"> 
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+</div>
+
+<div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <form method="post" action="/app4forms/form1/"> <!-- sends data to action, but action is not compulsory -->
+        {% csrf_token %} <!-- must have for post method, otherwise can't submit -->
+        <div class="mb-3">
+            <label for="choose" class="form-label">Are you a Human?</label>
+            <select class="form-select" id="choose" name="singleChoice">
+                <option selected>Expand to Select</option>
+                <option value="No">No</option> <option value="Yes">Yes</option> <option value="Maybe">Maybe?</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="multiSelect" class="form-label">Select all the Berries below :</label>
+            <select class="form-select" size="3" multiple id="multiSelect" name="multiChoice">
+                <option value="1">Plums</option> <option value="2">Eggplants</option>
+                <option value="3">Strawberries</option> <option value="4">Watermelons</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+    </form>
+</div>
+
+{% if selected != "Expand to Select" %}
+<div class="mx-auto my-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <h2> Human? {{selected}} </h2>
+</div>
+{% endif %}
+
+{% endblock %}
