@@ -13,7 +13,7 @@
 </div>
 
 <div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data"> <!-- enctype is for file uploading -->
         {% csrf_token %}
         {{form | crispy}} <!-- for styling the form with crispy -->
         <button type="submit" class="btn btn-primary my-2">Submit</button>
