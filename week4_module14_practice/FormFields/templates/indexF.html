@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block formActive %} active {% endblock %}
+
+{% block content %}
+<div style="width: fit-content;" 
+ class="mx-auto my-5 p-5 border border-secondary-subtle border-2 rounded">
+    <form method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-primary"> Submit </button>
+    </form>
+</div>
+{% endblock %}
