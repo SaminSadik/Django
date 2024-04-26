@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block activeA %} active {% endblock %}
+
+{% block content %}
+<div class="w-50 mx-auto my-3">
+    <h1 class="mt-5"> Sure you wanna delete this ? </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <button type="submit" class="btn btn-lg btn-danger">Delete Album</button>
+    </form>
+</div>
+{% endblock %}
