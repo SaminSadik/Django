@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block form_content %}
+<div class="text-center mt-3 d-grid gap-2">
+    <button class="btn btn-primary mt-2 mb-1">Save</button>
+    <button class="btn btn-warning mt-2 mb-3">
+        <a href="{% url 'changePass1' %}" class="nav-link">Change Password</a>
+    </button>
+</div>
+{% endblock %}

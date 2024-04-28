@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block form_content %}
+<div class="text-center mt-3 d-grid gap-2">
+    <button class="btn btn-primary mb-2">Signup</button>
+    <hr>
+    <div class = "text-center">
+        <small>Already have an account?</small>
+        <a href="{% url 'user_login' %}" class="btn btn-success mb-2">Login Now</a>
+    </div>
+</div>
+{% endblock %}

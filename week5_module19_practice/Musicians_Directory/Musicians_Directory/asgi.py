@@ -1,5 +1,5 @@
 """
-ASGI config for week5_module18_practice project.
+ASGI config for Musicians_Directory project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'week5_module18_practice.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Musicians_Directory.settings')
 
 application = get_asgi_application()

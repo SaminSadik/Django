@@ -3,9 +3,10 @@
 import os
 import sys
 
+
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'week5_module18_practice.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Musicians_Directory.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

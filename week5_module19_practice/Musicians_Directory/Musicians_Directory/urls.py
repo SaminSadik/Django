@@ -1,5 +1,5 @@
 """
-URL configuration for week5_module18_practice project.
+URL configuration for Musicians_Directory project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -21,5 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('user/', include('user.urls')),
+    path('musician/', include('musician.urls')),
+    path('album/', include('album.urls')),
+    path('user/',include('user.urls'))
 ]
