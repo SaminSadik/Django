@@ -55,3 +55,9 @@
 	from django.shortcuts import render
 5. Now return render(request, "appName/_.html") from functions to load html pages
  
+ 
+# Frequently Used Terminal Commands:
+1.[for local site deployment] 					py manage.py runserver
+2.[after making changes to model/database] 		py manage.py makemigrations
+3.[after makemigrations command, to finalize] 	py manage.py migrate
+4.[to make admin account] 						py manage.py createsuperuser
