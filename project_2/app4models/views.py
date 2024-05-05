@@ -26,14 +26,13 @@ def delete(request, id):
 
 def edit(request, id):
     data = models.myModel.objects.get(pk=id) # getting the object with the specified id
-    form = forms.Model_Form(instance=data) # getting the form with the object data
     if request.method == "POST":
         form = forms.Model_Form(request.POST, instance=data) # getting form with entries & instance
         if form.is_valid():
             form.save()
             return redirect('Model')
     else:
-        form = forms.Model_Form(instance=data)
+        form = forms.Model_Form(instance=data)  # getting the form with just the object data
     return render(request,'model.html', {'form': form})
 
 def relations(request):

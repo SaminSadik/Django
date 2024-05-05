@@ -34,7 +34,7 @@
 2. Create urls.py file in app folder
 3. In the project url.py, add the following codes:
 	a. , include AFTER from django.urls import path
-	b. path('app_1/', include('app_1.urls')), AFTER urlpatterns = [...
+	b. path('appName/', include('appName.urls')), AFTER urlpatterns = [...
 
 
 # Templates from Project:

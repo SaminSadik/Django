@@ -22,6 +22,7 @@ class Model_Form(forms.ModelForm):
         } # to add a text under the form fields
         widgets = {
             'full_name': forms.Textarea(attrs={'rows':2, 'class':'border border-success'}),
+            'checkboc': forms.Textarea(attrs={'id':'required'})
         } # adds widgets to the form fields
         error_messages = {
             'email_address': {'invalid-feedback': 'must be a valid & unique email address'},

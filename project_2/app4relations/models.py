@@ -2,8 +2,11 @@ from django.db import models
 from app4models.models import myModel, myTable # for accessing models from another app
 
 class exampleModel(models.Model): # used for demostrating 1toMANY rel later down
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
+    slug = models.SlugField(max_length=20, unique=True, null=True, blank=True) # used for custom URLS
     def __str__(self): return self.name
+    # even without str method, admin panel appearance can be changed in admin.py class
 
 class relationModel(models.Model):
     #? 1to1 syntax: models.OneToOneField(to=related_model , on_delete=models.__ , othersOptional...)
