@@ -8,4 +8,5 @@ urlpatterns = [
     path('edit/<int:id>', views.edit, name='edit'),
     path('relations/', views.relations, name='relations'),
     path('unrelate/<int:id>', views.unrelate, name='unrelate'),
+    path('relations/<slug:SLUG>', views.relations, name='slugSort'),
 ]

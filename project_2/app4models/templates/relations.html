@@ -20,7 +20,9 @@
           <tr>
             <td>{{obj.account.full_name}}</td>
             <td>{{obj.account.email_address}}</td>
-            <td>{{obj.speciality.name}}</td>
+            <td>
+              <a href="{% url 'slugSort' obj.speciality.slug %}">{{obj.speciality.name}}</a>
+            </td>
             <td> <!-- many to many relation can have multiple data, so needs looping -->
                 {% for cat in obj.category.all %}
                     <p>#{{cat.ID}} - {{cat.name}}</p>
