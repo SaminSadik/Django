@@ -1,0 +1,15 @@
+{% extends 'session.html' %}
+
+{% block sesh %}
+    <h1 class="text-center m-5 p-5">
+        {% if ID %}
+        <span class="text-success">Got Session</span>
+        <span class="border py-1 px-3">
+            <code>{{ID}}</code> {{code}}
+        </span>
+        {% else %}
+        Session <span class="border py-1 px-3">{{code}}</span>
+        <p class="fs-5 m-3 text-warning">Make Sure To Set Session</p>
+        {% endif %}
+    </h1>
+{% endblock %}

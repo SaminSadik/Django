@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="m-5 p-5 d-flex justify-content-evenly align-items-center flex-wrap">
+        <a href="{% url 'set_session' %}" class="btn btn-lg btn-outline-primary">SET SESSION</a>
+        <a href="{% url 'get_session' %}" class="btn btn-lg btn-outline-success">GET SESSION</a>
+        <a href="{% url 'del_session' %}" class="btn btn-lg btn-outline-danger ">DEL SESSION</a>
+    </div>
+
+    {% block sesh %}
+    {% endblock %}
+{% endblock %}
