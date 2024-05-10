@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <h1 class="text-center">Sure Wanna Delete This?</h1>
+    <p class="fs-5"><u>Name:</u> {{context.name}}</p>
+    <p><b>Content:</b> {{context.content}}</p>
+    <hr class="bg-dark my-3">
+    <div class="text-end">
+        <button class="btn btn-outline-success m-1"><a href="/" class="nav-link">NO</a></button>
+        <form method="post" class="d-inline-block"> 
+            {% csrf_token %} <!-- DeleteView needs a submit button in post form -->
+            <input class="btn btn-danger m-1" type="submit" value="YES">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

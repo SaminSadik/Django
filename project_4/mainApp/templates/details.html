@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<div class="text-center m-5 p-5 mb-1">
+    <hr class="bg-dark my-3">
+    <h1>{{main.name}}</h1>
+    <h6>By {{main.owner}}</h6>
+    {% if main.pic %}
+        <img src="{{main.pic.url}}" class="w-100">
+    {% else %}
+        <hr class="bg-dark my-1 mx-5 px-5">
+    {% endif %}
+    <!-- img src format: obj-Name.field-Name.url -->
+    <p>{{main.content}}</p>
+    <hr class="bg-dark my-3">
+</div>
+
+{% if comments %}
+    <div class="mx-5 px-5 mb-3">  
+        <h5 class="m-1"><u>All {{comments | length}} Comments:</u></h5>
+        {% for comment in comments %}
+            <div class="p-3 my-2 border border-secondary-subtle border-2 rounded">
+                <p><b>{{comment.credit}}</b></p>
+                <hr class="bg-dark my-3">
+                <p>{{comment.content}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="m-5 p-5 mt-0 pt-0">
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {% load crispy_forms_tags %}
+            {{form | crispy}}
+            <input class="btn btn-primary" type="submit" value="Comment">
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}
