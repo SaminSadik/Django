@@ -1,0 +1,12 @@
+{% extends 'cookies.html' %}
+
+{% block cooking %}
+    <h1 class="text-center m-5 p-5">
+        {% if name %}
+            <span class="text-success">Got Cookie</span>
+            <span class="border py-1 px-3">{{name}}</span>
+        {% else %}
+            <span class="text-warning">No Cookies Set to Get</span>
+        {% endif %}
+    </h1>
+{% endblock %}

@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.base),
     path('user/', include('user.urls')),
+    path('cooss/', include('cookiesession.urls')),
 ]

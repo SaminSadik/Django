@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="m-5 p-5 d-flex justify-content-evenly align-items-center flex-wrap">
+        <a href="{% url 'set_cookie' %}" class="btn btn-lg btn-outline-primary">SET COOKIE</a>
+        <a href="{% url 'get_cookie' %}" class="btn btn-lg btn-outline-success">GET COOKIE</a>
+        <a href="{% url 'del_cookie' %}" class="btn btn-lg btn-outline-danger ">DEL COOKIE</a>
+    </div>
+
+    {% block cooking %}
+    {% endblock %}
+{% endblock %}
