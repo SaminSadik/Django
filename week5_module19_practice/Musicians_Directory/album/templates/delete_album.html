@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+    <h3> Sure you wanna delete this ? </h3>
+    <hr class="bg-dark my-5">
+    <p class="d-flex justify-content-between align-items-center">
+        <b>Album Name:</b>
+        <u class="m-2"> {{album.name}} </u>
+    </p>
+    <p class="d-flex justify-content-between align-items-center">
+        <b>Artist:</b>
+        <u class="m-2"> {{album.musician}} </u>
+    </p>
+    <p class="d-flex justify-content-between align-items-center">
+        <b>Album Ratings:</b>
+        <u class="m-2"> 0{{album.rating}} / 05 </u>
+    </p>
+    <p class="d-flex justify-content-between align-items-center">
+        <b>Release Date:</b>
+        <u class="m-2"> {{album.release_date}} </u>
+    </p>
+    <form method="post" class="d-flex justify-content-end">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-4">Delete Album</button>
+    </form>
+</div>
+{% endblock %}

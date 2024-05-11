@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block activeSi %} active {% endblock %}
+
+{% block content %}
+    <div class="mx-auto mt-5 p-5 border border-secondary-subtle border-2 rounded" style="width: fit-content;">
+        <form method="post"> 
+        {% csrf_token %}
+        {% load crispy_forms_tags %}
+        {{ form | crispy }}
+        <input class="btn btn-primary w-100 my-3" type="submit" value="Submit">
+        
+        <hr class="bg-dark my-4">
+        <a href="{% url 'signup' %}" class="text-danger">Don't Have An Account Yet?</a>
+        </form>
+    </div>
+{% endblock %}
