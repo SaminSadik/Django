@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block activeH %} active {% endblock %}
+
+{% block content %}
+    <section id="Hero">
+        <div class="w-100 p-3 d-flex flex-column flex-md-row align-items-center justify-content-evenly">
+            <div class="text-center text-md-start">
+                <p class="fs-1 fw-bold">
+                    Don't Settle for <span class="text-danger">Ordinary</span><br>
+                    Find Your <span class="text-primary">Extraordinary</span> Ride.
+                </p> <p class="fs-5" style="max-width: 40rem;">
+                    Forget the showroom hassle. We offer a seamless buying experience
+                    providing user-friendly search, transparent pricing, and expert support,
+                    <span class="text-success">Online and Stress-free</span>
+                </p>
+            </div>
+            <img src="{% static 'cardealer.png' %}" style="width: clamp(35rem, 60vw, 60rem);">
+        </div>
+    </section>
+
+    <section id="Brands" class="bg-body-tertiary shadow-sm mx-0 mt-4 p-3 d-flex justify-content-between">
+        <div class="d-flex gap-3 flex-wrap align-items-center">
+            <a class="btn
+                {% if on_brand == 'ALL' or on_brand is None %} btn-secondary
+                {% else %} btn-outline-secondary {% endif %}"  
+                href="{% url 'branded' 'ALL' %}">All Brands</a>
+            {% for brand in brands %}
+                <a class="btn 
+                    {% if on_brand == brand.slug %} btn-secondary
+                    {% else %} btn-outline-secondary {% endif %}" 
+                    href="{% url 'branded' brand.slug %}">{{brand.name}}</a>
+            {% endfor %}
+        </div>
+        <h4 class="mx-3 mt-2 d-md-inline-block d-none">Cars Available: {{cars|length}}</h4>
+    </section>
+
+    <section id="Cars">
+        <h4 class="d-md-none mx-3 mt-4">Cars Available: {{cars|length}}</h4>
+        <hr class="d-md-none bg-dark-subtle my-2 mx-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-md-3 m-0 mb-5">
+            {% for car in cars %}
+                <div class="col">
+                    <div class="card m-5">
+                        <img src="{{car.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h4 class="card-title">{{car.name}}</h4>
+                            <h6 class="card-subtitle text-body-secondary">Brand: {{car.brand}}</h6>
+                            {% if car.quantity > 0 %}
+                                <h5 class="card-text">
+                                    Price: {{car.price}}/-
+                                    <span class=" m-0 text-success">In Stock</span>
+                                </h5>
+                            {% else %}
+                                <h5 class="m-0 text-danger">Out of Stock</h5>
+                            {% endif %}
+                            <a href="{% url 'car_details' car.slug %}" class="btn btn-primary mt-2">View Details</a>
+                            {% if request.user.is_authenticated and car.quantity > 0 %}
+                                <a href="{% url 'order' car.slug %}" class="btn btn-success mt-2">Buy Now</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

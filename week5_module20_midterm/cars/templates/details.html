@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<style>
+    #car-img{
+        min-width: 46vw;
+        max-width: 96vw;
+    }
+    .info-txt{font-size: 3.33vw;}
+    .description{font-size: 2.5vw;}
+    @media (min-width: 992px) {
+        #car-info{min-width: max-content;}
+        .info-txt{font-size: 2.5vw;}
+        .description{font-size: 1.75vw;}
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-column flex-lg-row justify-content-evenly align-items-start">
+        <img src="{{Car.image.url}}" class="mx-auto mx-lg-3 my-3" id="car-img">
+        <div class="mx-3 mt-2 mb-4" id="car-info">
+            <p class="info-txt"><b>Model:</b> {{Car.name}}</p>
+            <p class="info-txt"><b>Brand:</b> {{Car.brand}}</p>
+            <div class="d-lg-none">
+                <p class="mb-1 info-txt"><b>Description:</b></pclas>
+                <div class="border rounded p-2 mb-3 description">{{Car.description}}</div>
+            </div>
+            <p class="info-txt"><b>Price:</b> {{Car.price}}/-</p>
+            {% if Car.quantity > 0 %}
+                <p class="info-txt"><b>Quantity:</b> {{Car.quantity}} in stock</p>
+            {% else %}
+                <a class="btn btn-danger disabled mt-2 px-5"><span class="info-txt">Out of Stock</span></a>
+            {% endif %}
+            {% if request.user.is_authenticated and Car.quantity > 0 %}
+                <a href="{% url 'order' Car.slug %}" class="btn btn-success mt-2 py-3 w-100"><span class="info-txt">Buy Now</span></a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="mx-3 d-none d-lg-block">
+        <p class="mb-1 info-txt"><b>Description:</b></pclas>
+        <div class="border rounded p-2 mb-3 description">{{Car.description}}</div>
+    </div>
+
+    <section id="comments" class="bg-body-secondary shadow pb-5">
+        <div class="mt-5 pt-5 mx-3 d-flex justify-content-between align-items-center">
+            {% if Comments|length > 0 %}
+                <h1>Comments <small>(Total {{Comments|length}} Found)</small></h1>
+            {% else %}
+                <h2>No Comments Yet</h2>
+            {% endif %}
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment_modal">Add Comment</button>
+            
+            <div class="modal fade" id="comment_modal" tabindex="-1" aria-labelledby="modal_lable" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="modal_lable">Add a Comment for {{Car.name}}</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form method="post">
+                            <div class="modal-body">
+                                {% csrf_token %}
+                                {% load crispy_forms_tags %}
+                                {{form | crispy}}
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-primary px-4" type="submit" value="Submit">
+                            </div>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+
+        {% for comment in Comments %}
+            <hr class="bg-dark-subtle mx-3 mt-3">
+            <div class="mx-3 p-1">
+                <h4>{{comment.name}} <small class="text-secondary">@ {{comment.time}}</small></h4>
+                <p class="bg-light-subtle rounded p-3 mb-2">{{comment.comment}}</p>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
