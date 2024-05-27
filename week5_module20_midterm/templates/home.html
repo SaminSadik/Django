@@ -57,7 +57,7 @@
                             {% endif %}
                             <a href="{% url 'car_details' car.slug %}" class="btn btn-primary mt-2">View Details</a>
                             {% if request.user.is_authenticated and car.quantity > 0 %}
-                                <a href="#" class="btn btn-success mt-2">Buy Now</a>
+                                <a href="{% url 'order' car.slug %}" class="btn btn-success mt-2">Buy Now</a>
                             {% endif %}
                         </div>
                     </div>

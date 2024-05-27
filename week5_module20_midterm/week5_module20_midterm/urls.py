@@ -25,6 +25,7 @@ urlpatterns = [
     path('', views.Home, name='home'),
     path('user/', include('users.urls')),
     path('car/', include('cars.urls')),
+    path('order/', include('orders.urls')),
     path('brand:<slug:brand_slug>/', views.Branded.as_view(), name='branded')
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,6 +6,7 @@ from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from orders.models import OrderModel
 
 # Create your views here.
 def signup(request):
@@ -50,7 +51,9 @@ def Logout(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html', {'user': request.user})
+    user = request.user
+    orders = OrderModel.objects.filter(user=user)
+    return render(request, 'profile.html', {'user':user, 'orders':orders})
 
 
 @login_required 
