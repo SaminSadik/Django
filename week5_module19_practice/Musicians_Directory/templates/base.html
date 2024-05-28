@@ -41,6 +41,17 @@
             </div>
         </nav>
 
+        {% if messages %}
+            <div id="Alert">
+            {% for m in messages %}
+                <div class="alert alert-{{m.tags}} alert-dismissible m-3" role="alert">
+                    <div>{{m}}</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
         {% block content %}
         <div class="mx-auto my-5 w-75">
             <table class="table table-dark table-hover table-bordered">
