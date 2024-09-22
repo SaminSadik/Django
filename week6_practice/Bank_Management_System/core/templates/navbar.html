@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <span class="text-green-500">My</span><span class="text-green-700">Bank</span>
+        </a>
+        {% if user.is_authenticated %}
+        <div class="ms-auto me-4">
+            <span class="p-1 me-1 border align-middle">User: {{ request.user.first_name }}</span>
+            <span class="p-1 border align-middle">Balance: {{ request.user.account.balance }}$</span>
+        </div>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 ms-md-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'transaction_report' %}">
+                        <span class="hover:text-green-500">Transactions</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'deposit_money' %}">
+                        <span class="hover:text-green-500">Deposit</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'withdraw_money' %}">
+                        <span class="hover:text-green-500">Withdraw</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'send_money' %}">
+                        <span class="hover:text-green-500">Transfer</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'loan_request' %}">
+                        <span class="hover:text-green-500">Loan</span>
+                    </a>
+                </li>
+                <li class="nav-item flex gap-1">
+                    <a class="nav-link" href="{% url 'profile' %}">
+                        <span class="bg-blue-600 text-blue-100 rounded border pt-1 pb-2 px-3 hover:bg-transparent hover:text-blue-600">
+                            Profile
+                        </span>
+                    </a>
+                    <a class="nav-link" href="{% url 'logout' %}">
+                        <span class="bg-red-700 text-red-100 rounded border pt-1 pb-2 px-3 hover:bg-transparent hover:text-red-700">
+                            Logout
+                        </span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">
+                        <span class="bg-green-800 text-green-100 rounded pt-1 pb-2 px-3 hover:bg-red-500">
+                            Login
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">
+                        <span class="bg-green-500 text-green-100 rounded pt-1 pb-2 px-3 hover:bg-red-500">
+                            Register
+                        </span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
